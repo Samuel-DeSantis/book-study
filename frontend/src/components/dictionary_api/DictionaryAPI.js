@@ -26,14 +26,13 @@ export default class DictionaryAPI extends Component {
     .then(data => this.setState({
       definition: data[0]['shortdef'][0]
     }))
-      // console.log(data[data.length-2]['shortdef'][0]))
-  }   //[1] ${data[data.length-2]['shortdef'][0]}; [2] ${data[data.length-2]['shortdef'][0]}
+  }
 
   render() {
     return (
-      <div>
-        <p>DictionaryAPI</p>
-        <form onSubmit={this.handleOnSubmit}>
+      <div className='dictionary-container'>
+        <p>Dictionary</p>
+        <form className='dictionary-form' onSubmit={this.handleOnSubmit}>
           <input 
             type='text' 
             name='word'
@@ -43,8 +42,10 @@ export default class DictionaryAPI extends Component {
           />
           <input type='submit' value='Search'/>
         </form>
-        <p>Word: {this.state.word}</p>
-        <p>Definition: {this.state.definition}</p>
+        {/* <p>Word: {this.state.word}</p> */}
+        <p>Definition: </p>
+        <p className='dictionary-definition'>{this.state.definition}</p>
+        <p>Powered by: <a href='https://www.merriam-webster.com/' target='_blank' rel='noopener noreferrer'>Merriam-Webster</a></p>
       </div>
     )
   }

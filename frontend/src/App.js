@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import DictionaryAPI from './components/dictionary_api/DictionaryAPI';
 import BibleAPI from './components/bible_api/BibleAPI';
+import Philosophy from './components/philosophy/Philosophy';
+import Math from './components/math/Math';
 
 function App() {
   return (
@@ -9,8 +11,11 @@ function App() {
 
       <DictionaryAPI />
       <BibleAPI />
+      <Philosophy />
+      <Math />
 
       <header className="App-header">
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.

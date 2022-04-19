@@ -17,6 +17,9 @@ export default class DictionaryAPI extends Component {
     e.preventDefault()
 
     this.getDefinition(this.state.word)
+    // this.setState({
+    //   word: ''
+    // })
   }
 
   getDefinition (word) {
@@ -30,23 +33,24 @@ export default class DictionaryAPI extends Component {
 
   render() {
     return (
-      <div className='dictionary-container'>
-        <p>Dictionary</p>
-        <form className='dictionary-form' onSubmit={this.handleOnSubmit}>
-          <input 
-            type='text' 
-            name='word'
-            autoComplete='off' 
-            value={this.state.word}
-            onChange={this.handleOnChange}
-          />
-          <input type='submit' value='Search'/>
-        </form>
-        {/* <p>Word: {this.state.word}</p> */}
-        <p>Definition: </p>
-        <p className='dictionary-definition'>{this.state.definition}</p>
-        <p>Powered by: <a href='https://www.merriam-webster.com/' target='_blank' rel='noopener noreferrer'>Merriam-Webster</a></p>
-      </div>
+    <div className='dictionary-container'>
+      <p>Dictionary</p>
+      <form className='dictionary-form' onSubmit={this.handleOnSubmit}>
+        <input 
+          type='text' 
+          name='word'
+          autoComplete='off' 
+          value={this.state.word}
+          onChange={this.handleOnChange}
+        />
+        <input type='submit' value='Search'/>
+      </form>
+      <p>Definition: </p>
+      <p className='dictionary-definition'>{this.state.definition}</p>
+      <p>Powered by: <a href='https://www.merriam-webster.com/' target='_blank' rel='noopener noreferrer'>Merriam-Webster</a></p>
+    </div>
     )
   }
 }
+
+

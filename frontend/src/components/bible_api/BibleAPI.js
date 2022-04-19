@@ -4,26 +4,41 @@ import React, { Component } from 'react'
 // const scripture_api = new ScriptureAPI('188d484b898780abe077fefa6641187d')
 export default class BibleAPI extends Component {
 
+  state = {
+      bibles: []
+  }
+
   // componentDidMount () {
-  //   const params = {
-  //     language: 'eng',
-  //     abbreviation: 'kjv',
-  //     name: 'king james version'
-  //   }
-
-  //   scripture_api.getBibles()
-  //   .then(data => console.log(data))
-  //   .catch(error => console.log(error))
+  //   URL = `https://api.scripture.api.bible/v1/bibles`
+  //   fetch(URL, {
+  //     method: 'GET',
+  //     headers: {
+  //       'api-key': '188d484b898780abe077fefa6641187d',
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     let bibles = []
+  //     data.data.forEach(bible => {
+  //     if (bible.language.id === 'eng') {
+  //       // console.log(
+  //       bibles.push({
+  //         'id': bible.id,
+  //         'name': bible.name,
+  //         'abbr': bible.abbreviation,
+  //         'language': bible.language.name
+  //       })
+  //     }
+  //   })
+  //   this.setState({
+  //     bibles: bibles
+  //   })
+  //   console.log(this.state.bibles)
+  //   })
   // }
-  
-  componentDidMount () {
 
-    const bibles ={
-      'kjv': 'de4e12af7f28f599-02'
-    }
-
-
-    URL = `https://api.scripture.api.bible/v1/bibles/${bibles['kjv']}/books/GEN/chapters`
+  fetchBibleAPI () {
+    URL = `https://api.scripture.api.bible/v1/bibles`
     fetch(URL, {
       method: 'GET',
       headers: {
@@ -33,10 +48,28 @@ export default class BibleAPI extends Component {
     .then(response => response.json())
     .then(data => console.log(data))
   }
-  
-    render() {
+
+  availableBibles (obj) {
+    let bibles = []
+    obj.data.forEach(bible => {
+      if (bible.language.id === 'eng') {
+        // console.log(
+        bibles.push({
+          'id': bible.id,
+          'name': bible.name,
+          'abbr': bible.abbreviation,
+          'language': bible.language.name
+        })
+      }
+    })
+    return bibles
+  }
+
+  render() {
     return (
-      <div>BibleAPI</div>
+      <div>
+        <p>BibleAPI</p>
+      </div>
     )
   }
 }
